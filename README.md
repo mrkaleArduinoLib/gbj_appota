@@ -55,7 +55,7 @@ Constructor creates the class instance object and initiates internal resources.
 - It creates HTTP server for OTA.
 
 #### Syntax
-    gbj_appota(const char *hostname, unsigned int port = 80);
+    gbj_appota(const char *hostname, unsigned int port = 80)
 
 #### Parameters
 
@@ -86,7 +86,7 @@ The method initiates OTA functionality and starts the HTTP server.
 - The OTA functionality is accessable on HTTP server subpage with suffix `/update`.
 
 #### Syntax
-	void begin();
+	void begin()
 
 #### Parameters
 None
@@ -97,12 +97,12 @@ None
 #### Example
 Calling methods in the sketch loop.
 ```cpp
-gbj_appota ota = gbj_appota("MyHostname");
-// gbj_appota ota = gbj_appota("MyHostname", 8080);
+gbj_appota ota = gbj_appota("MyHostname")
+// gbj_appota ota = gbj_appota("MyHostname", 8080)
 
 void setup()
 {
-  ota.begin();
+  ota.begin()
 }
 ```
 
