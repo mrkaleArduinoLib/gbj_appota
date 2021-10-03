@@ -5,6 +5,7 @@ This is an application library, which is used usually as a project library for p
 
 - Library specifies (inherits from) the application `gbj_appcore` library.
 - Library utilizes error handling from the parent class.
+- Library creates internal HTTP server for OTA.
 
 
 <a id="dependency"></a>
@@ -51,23 +52,14 @@ Other constants and enumerations are inherited from the parent library.
 
 #### Description
 Constructor creates the class instance object and initiates internal resources.
-- It inputs hostname of the device on a network and port for HTTP server.
-- It creates HTTP server for OTA.
 
 #### Syntax
-    gbj_appota(const char *hostname, unsigned int port = 80)
+    gbj_appota(unsigned int port = 80)
 
 #### Parameters
-
-- **hostname**: Pointer to the hostname of a device on the network.
-  - *Valid values*: Constant pointer to string
-  - *Default value*: none
-
-
 - **port**: Listening TCP port for HTTP server.
   - *Valid values*: non-negative integer
   - *Default value*: 80
-
 
 #### Returns
 Object enabling OTA functionality.
@@ -82,7 +74,7 @@ Object enabling OTA functionality.
 #### Description
 The method initiates OTA functionality and starts the HTTP server.
 - HTTP server should be accessed in an internet browser on IP address and eventually defined port of the wifi connection of the device.
-- The server respondes with a simple one-line message containing hostname and info about accessing OTA functionality.
+- The server respondes with a simple one-line message containinginfo about accessing OTA functionality.
 - The OTA functionality is accessable on HTTP server subpage with suffix `/update`.
 
 #### Syntax
@@ -95,14 +87,12 @@ None
 None
 
 #### Example
-Calling methods in the sketch loop.
 ```cpp
-gbj_appota ota = gbj_appota("MyHostname")
-// gbj_appota ota = gbj_appota("MyHostname", 8080)
-
+gbj_appota ota = gbj_appota();
+// gbj_appota ota = gbj_appota(8080);
 void setup()
 {
-  ota.begin()
+  ota.begin();
 }
 ```
 

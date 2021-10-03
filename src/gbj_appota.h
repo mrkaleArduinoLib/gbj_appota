@@ -41,7 +41,6 @@ class gbj_appota : public gbj_appcore
 
 public:
   static const String VERSION;
-  AsyncWebServer server;
 
   /*
     Constructor.
@@ -50,11 +49,6 @@ public:
     Constructor creates the class instance object and HTTP server instance.
 
     PARAMETERS:
-    hostname - The hostname for a device on the network.
-      - Data type: constant string
-      - Default value: none
-      - Limited range: none
-
     port - Listening port for HTTP server.
       - Data type: non-negative integer
       - Default value: 80
@@ -62,10 +56,9 @@ public:
 
     RETURN: object
   */
-  inline gbj_appota(const char *hostname, unsigned int port = 80)
-    : server(port)
+  inline gbj_appota(unsigned int port = 80)
   {
-    _hostname = hostname;
+    _server = new AsyncWebServer(port);
   }
 
   /*
@@ -80,20 +73,23 @@ public:
   */
   inline void begin()
   {
-    SERIAL_ACTION("begin HTTP server...");
-    String response =
-      String(_hostname) + " ready for OTA. Browse its subpage '/update'.";
-    server.on("/",
-              HTTP_GET,
-              [response](AsyncWebServerRequest *request)
-              { request->send(200, "text/plain", response); });
-    AsyncElegantOTA.begin(&server);
-    server.begin();
+    SERIAL_ACTION("Begin HTTP server...");
+    _server->on("/",
+                HTTP_GET,
+                [](AsyncWebServerRequest *request)
+                {
+                  request->send(
+                    200,
+                    "text/plain",
+                    "MCU is ready for OTA. Go to '/update'.");
+                });
+    AsyncElegantOTA.begin(_server);
+    _server->begin();
     SERIAL_ACTION_END("OK");
   }
 
 private:
-  const char *_hostname;
+  AsyncWebServer *_server;
 };
 
 #endif
