@@ -54,7 +54,7 @@ Other constants and enumerations are inherited from the parent library.
 Constructor creates the class instance object and initiates internal resources.
 
 #### Syntax
-    gbj_appota(unsigned int port = 80)
+    gbj_appota(unsigned int port)
 
 #### Parameters
 - **port**: Listening TCP port for HTTP server.
