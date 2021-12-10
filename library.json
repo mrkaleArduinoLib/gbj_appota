@@ -1,7 +1,7 @@
 {
   "name": "gbj_appota",
   "keywords": "application",
-  "description": "Library executes connection to a WiFi network.",
+  "description": "Library provides an http server for updating firmware Over The Air through WiFi connection.",
   "repository": {
     "type": "git",
     "url": "https://github.com/mrkaleArduinoLib/gbj_appota.git"
@@ -13,8 +13,11 @@
     "espressif32"
   ],
   "dependencies": {
-    "mrkaleArduinoLib/gbj_appbase": "*",
+    "mrkaleArduinoLib/gbj_appcore": "*",
     "mrkaleArduinoLib/gbj_serial_debug": "*",
-    "mrkaleArduinoLib/gbj_timer": "*"
+    "mrkaleArduinoLib/gbj_timer": "*",
+    "ayushsharma82/AsyncElegantOTA": "*",
+    "me-no-dev/ESPAsyncTCP": "*",
+    "me-no-dev/ESP Async WebServer": "*"
   }
 }
