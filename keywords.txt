@@ -5,15 +5,12 @@
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
-gbj_appota	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-run	KEYWORD2
-setPeriod	KEYWORD2
-getPeriod	KEYWORD2
-isConnected	KEYWORD2
+gbj_appota	KEYWORD2
+begin	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

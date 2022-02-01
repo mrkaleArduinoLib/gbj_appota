@@ -15,7 +15,6 @@
   "dependencies": {
     "mrkaleArduinoLib/gbj_appcore": "*",
     "mrkaleArduinoLib/gbj_serial_debug": "*",
-    "mrkaleArduinoLib/gbj_timer": "*",
     "ayushsharma82/AsyncElegantOTA": "*",
     "me-no-dev/ESPAsyncTCP": "*",
     "me-no-dev/ESP Async WebServer": "*"
