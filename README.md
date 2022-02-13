@@ -50,6 +50,7 @@ Other constants, enumerations, result codes, and error codes are inherited from 
 ## Interface
 * [gbj_appota()](#gbj_appota)
 * [begin()](#begin)
+* [getPort()](#getPort)
 
 
 <a id="gbj_appota"></a>
@@ -69,6 +70,9 @@ Constructor creates the class instance object and initiates internal resources.
 
 #### Returns
 Object enabling OTA functionality.
+
+#### See also
+[getPort()](#getPort)
 
 [Back to interface](#interface)
 
@@ -101,5 +105,24 @@ void setup()
   ota.begin();
 }
 ```
+
+[Back to interface](#interface)
+
+
+<a id="getPort"></a>
+
+## getPort()
+
+#### Description
+Getter for input parameter of [constructor](#gbj_appota).
+
+#### Syntax
+	void getPort()
+
+#### Parameters
+None
+
+#### Returns
+Current TCP port for HTTP server.
 
 [Back to interface](#interface)

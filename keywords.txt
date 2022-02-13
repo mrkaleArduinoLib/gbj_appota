@@ -11,6 +11,7 @@
 #######################################
 gbj_appota	KEYWORD2
 begin	KEYWORD2
+getPort	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

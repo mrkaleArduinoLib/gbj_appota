@@ -58,7 +58,8 @@ public:
   */
   inline gbj_appota(unsigned int port = 80)
   {
-    server_ = new AsyncWebServer(port);
+    port_ = port;
+    server_ = new AsyncWebServer(port_);
   }
 
   /*
@@ -78,17 +79,20 @@ public:
                 HTTP_GET,
                 [](AsyncWebServerRequest *request)
                 {
-                  request->send(
-                    200,
-                    "text/plain",
-                    "MCU is ready for OTA. Go to '/update'.");
+                  request->send(200,
+                                "text/plain",
+                                "MCU is ready for OTA. Go to '/update'.");
                 });
     AsyncElegantOTA.begin(server_);
     server_->begin();
     SERIAL_ACTION_END("OK");
   }
 
+  // Getters
+  inline unsigned int getPort() { return port_; }
+
 private:
+  unsigned int port_;
   AsyncWebServer *server_;
 };
 
