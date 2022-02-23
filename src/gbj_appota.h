@@ -40,7 +40,7 @@ class gbj_appota : public gbj_appcore
 {
 
 public:
-  static const String VERSION;
+  const String VERSION = "GBJ_APPOTA 1.1.0";
 
   /*
     Constructor.
