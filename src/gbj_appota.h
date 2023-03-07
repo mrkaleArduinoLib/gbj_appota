@@ -25,7 +25,7 @@
   #include <AsyncTCP.h>
   #include <WiFi.h>
 #else
-  #error !!! Only Espressif platforms are suppored !!!
+  #error !!! Only Espressif platforms are supported !!!
 #endif
 #include "gbj_appcore.h"
 #include "gbj_serial_debug.h"
