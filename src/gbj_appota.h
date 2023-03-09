@@ -40,8 +40,6 @@ class gbj_appota : public gbj_appcore
 {
 
 public:
-  const String VERSION = "GBJ_APPOTA 1.1.0";
-
   /*
     Constructor.
 
@@ -58,8 +56,7 @@ public:
   */
   inline gbj_appota(unsigned int port = 80)
   {
-    port_ = port;
-    server_ = new AsyncWebServer(port_);
+    server_ = new AsyncWebServer(port);
   }
 
   /*
@@ -72,27 +69,24 @@ public:
 
     RETURN: Result code.
   */
-  inline void begin()
+  inline void begin(String deviceName = "Device")
   {
     SERIAL_ACTION("Begin HTTP server...");
     server_->on("/",
                 HTTP_GET,
-                [](AsyncWebServerRequest *request)
+                [deviceName](AsyncWebServerRequest *request)
                 {
                   request->send(200,
                                 "text/plain",
-                                "MCU is ready for OTA. Go to '/update'.");
+                                deviceName +
+                                  " is ready for OTA. Go to '<IP>/update'.");
                 });
     AsyncElegantOTA.begin(server_);
     server_->begin();
     SERIAL_ACTION_END("OK");
   }
 
-  // Getters
-  inline unsigned int getPort() { return port_; }
-
 private:
-  unsigned int port_;
   AsyncWebServer *server_;
 };
 
